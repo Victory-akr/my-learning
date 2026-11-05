@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>资料查询助手 · 初步原型</title><link rel="stylesheet" href="style.css"></head>
+<body><header><span class="mark" aria-hidden="true">↳</span><strong>资料查询助手</strong><span>学习作品 / v0.1</span><a href="https://github.com/Victory-akr/my-learning/tree/main/demos/doc-finder" target="_blank" rel="noopener">查看源码</a></header>
+<div class="workspace"><aside><h2>资料库</h2><p>先找到原文，<br>再判断能否回答。</p><div id="documents"></div><label class="import">导入 TXT / MD<input id="files" type="file" accept=".txt,.md" multiple></label><button id="reset" class="quiet">恢复内置资料</button><small>导入内容只在当前页面内存中处理，刷新后清空。</small></aside>
+<main><div class="title"><h1>从资料里找答案</h1><p>当前展示你的公开学习资料。可导入校园公开文件，测试同一套查询流程。</p></div>
+<form id="query-form"><label for="query">输入想查的问题</label><div class="composer"><input id="query" autocomplete="off" maxlength="200" placeholder="例如：C 语言练习怎么编译？"><button type="submit">查找原文</button></div></form>
+<div class="examples"><span>试一试</span><button data-query="C语言练习怎么编译？">C语言练习怎么编译？</button><button data-query="make test">make test</button><button data-query="奖学金申请截止时间">资料之外的问题</button></div>
+<p id="status" role="status">输入问题，或点击示例开始查询。</p><section id="results" aria-label="查询结果"></section>
+<details><summary>这个原型目前能做什么？</summary><p>支持关键词检索、按标题分块、原文展示、来源链接及本地文档导入。当前回答为原文摘录，未接入大模型。资料未覆盖或无关键词命中时不提供答案；匹配到原文也仍需自行判断是否回答了问题。</p><p>内置资料来自本人 ds-cpp 仓库的公开 README 快照。原文件内的学习进度可能已变化，请以仓库最新内容为准。</p></details>
+<footer><span>不虚构资料之外的答案</span><span>方韵钦 · 职业规划展示原型</span></footer></main></div>
+<script src="data.js"></script><script src="search.js"></script><script src="app.js"></script></body></html>

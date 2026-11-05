@@ -1,0 +1,12 @@
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const {splitDocument, search} = require('./search.js');
+const docs=[{name:'练习说明.md',text:'## 编译\n用 Visual Studio 编译 C 语言练习。\n\n## 测试\nmake test 运行断言测试，检查空表与越界。',url:'https://github.com/Victory-akr/ds-cpp'}];
+test('按标题分块且保留来源',()=>{const x=splitDocument(docs[0]);assert.equal(x.length,2);assert.equal(x[1].heading,'测试');assert.equal(x[1].url,docs[0].url);assert.equal(x[1].line,4);});
+test('中文提问找原文',()=>assert.match(search(docs,'怎么编译C语言？')[0].text,/Visual Studio/));
+test('英文命令保留相关性',()=>assert.match(search(docs,'make test')[0].text,/断言测试/));
+test('无依据不返回结果',()=>assert.equal(search(docs,'奖学金申请截止时间').length,0));
+test('空问题不返回结果',()=>assert.equal(search(docs,'  ').length,0));
+test('停止词不能产生伪命中',()=>assert.equal(search(docs,'怎么？').length,0));
+test('空资料不返回结果',()=>assert.equal(search([],'编译').length,0));
+test('导入文档可找到原文位置',()=>assert.equal(search([{name:'本地.md',text:'## 借阅\n借书证需要本人办理。'}],'借书证')[0].line,1));

@@ -1,0 +1,8 @@
+window.DEMO_DOCUMENTS = [
+  {
+    "name": "ds-cpp 学习说明.md",
+    "text": "# ds-cpp · 数据结构 C++ 手写实现\n\n把自己的数据结构实现放这里：**每个结构 = 声明 + 实现 + 断言测试**，`make test` 全绿才算做完。\n\n## 为什么不是一个「笔记仓库」\n\n数据结构的价值不在于看过，而在于**能自己写出来、能解释每一步、能在越界/空表/表满这些边界上不出错**。\n所以这个仓库的每一个提交都对应一次完整的闭环：\n\n```\ninclude/x.h   只写声明\n   ↓\nsrc/x.cpp     合上资料，自己实现（不许抄）\n   ↓\ntests/x_test.cpp  先想边界：空 / 1 个元素 / 越界 / 表满\n   ↓\nmake test     全绿\n   ↓\ngit commit    提交信息写成「能解释的一句话」\n```\n\n## 目录\n\n```\ninclude/   声明（每个数据结构一个头文件）\nsrc/       实现（main.cpp 只做调用和打印）\ntests/     assert 断言测试\nc/         C 语言练习区（Visual Studio 项目，如 c/table = 顺序表）\nbin/       编译产物（已 gitignore）\n```\n\n## C 练习区怎么用（Windows + Visual Studio）\n\n本机没有 g++/make，所以 C 练习用 **Visual Studio**（已装，`D:\\Visual Studio`）：\n\n1. 双击打开 `c\\table\\table.slnx`（VS 里叫\"解决方案\"）\n2. 在右侧\"解决方案资源管理器\"里双击 `sequence.c` 开始写\n3. `Ctrl+F7` = 只编译当前文件（先看有没有语法错）；`Ctrl+F5` = 编译并运行（要有 `main()` 才能跑）\n4. 存档：在 `E:\\研学之路\\ds-cpp` 里 `git add -A` → `git commit -m \"一句话\"` → `git push`\n\n> 注意：仓库根目录的 `Makefile` / CI 只管 `src/*.cpp`（C++ 那条线），`c/` 里的 C 代码由 VS 自己编译，不参与 CI。\n\n## 本地/服务器怎么跑\n\n```bash\nmake check    # 只做语法检查（最快，先让编译器挑错）\nmake run      # 编译并运行 src/main.cpp\nmake test     # 编译并运行 tests/ 下所有测试\n```\n\n- Windows 本机：用 CLion（自带工具链）打开本目录即可，`CMakeLists` 可后续补\n- Linux（练习跑道）：`/srv/cpp-lab` 同构目录，ssh 上去直接 `make test`\n\n## 进度\n\n| 结构 | 状态 | 备注 |\n|---|---|---|\n| 顺序表 | 进行中 | `c/table/table/sequence.c`：整份被注释掉 + 11 个编译错误（本周 F1 修） |\n| 单链表 | 未开始 | |\n| 栈 / 队列 | 未开始 | |\n| 二叉树 | 未开始 | |\n\n## 说明\n\n- 这里是我自己写出来的实现，用来记录学习轨迹，也用来在复试/面试时讲清楚「怎么写的、为什么这么写」。\n- 报错先自己读编译器提示；AI 只用来解释「为什么错」，不用来代写。\n",
+    "url": "https://github.com/Victory-akr/ds-cpp/blob/main/README.md"
+  }
+];
+
